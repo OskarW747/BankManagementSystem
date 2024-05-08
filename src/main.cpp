@@ -18,7 +18,8 @@ void menu(int& index) {
         case (MAIN_MENU):
             cout << "1) Withdraw" << endl;
             cout << "2) Deposit" << endl;
-            cin.get();
+            
+            
             break;
     }
 }
