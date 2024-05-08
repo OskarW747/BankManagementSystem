@@ -1,36 +1,66 @@
 #include <iostream>
-#include <stdlib.h>
 
 using namespace std;
 
-// Menusindex
-#define MAIN_MENU       0
-#define DEFAULT_MENU    0
+#define MAIN_MENU_INDEX     0
+#define OPTION_MENU_INDEX   1
 
-int mode = DEFAULT_MENU;
+string mainMenu[3] = {"Withdraw", "Deposit", "Quit"};
+string optionMenu[3] = {"1", "2", "Back"};
 
-void initializeProgram() {
+const uint8_t mainMenuSize = 3;
+const uint8_t optionMenuSize = 3;
+
+string input;
+uint8_t menuIndex;
+
+void printMenu(string* menu, uint8_t size);
+void menuController();
+
+void initializeProgram()
+{
     cout << "Bankmanagement System" << endl;
 }
 
-void menu(int& index) {
-    switch (index) {
-        case (MAIN_MENU):
-            cout << "1) Withdraw" << endl;
-            cout << "2) Deposit" << endl;
-            
-            
+int main()
+{
+    initializeProgram();
+    printMenu(mainMenu, mainMenuSize);
+
+    /* Main loop */
+    while (true){
+
+        /* Get input */
+        input = cin.get();
+
+        /* Do logic */
+        
+        
+        /* Set output */
+        menuController();
+    }
+    
+    cin.get();
+    
+}
+
+void menuController() {
+    switch (menuIndex) {
+        case (MAIN_MENU_INDEX):
+            printMenu(mainMenu, mainMenuSize);
+            break;
+        case (OPTION_MENU_INDEX):
+            printMenu(optionMenu, optionMenuSize);
             break;
     }
 }
 
-int main()
-{   
-    initializeProgram();
-
-    /* Main loop */
-    while (true)
-    {
-        menu(mode);
+void printMenu(string* menu, uint8_t size)
+{
+    cout << "\n";
+    for (int i = 0; i < size; i++) {
+        cout << i << ") " << menu[i] << endl;
     }
+
+    cout << "Choose your alternative: ";
 }
