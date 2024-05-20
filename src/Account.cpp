@@ -15,7 +15,10 @@ void Account::deposit(int _amount)
 
 void Account::save()
 {
-    
+    std::ofstream saveFile;
+    saveFile.open("test.txt");
+    saveFile << "Test text\n";
+    saveFile.close();
 }
 
 // void Account::save(ofstream _saveFile){

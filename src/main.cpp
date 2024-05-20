@@ -31,6 +31,7 @@ void mainMenu(Account *account)
     cout << "1) Withdraw" << endl;
     cout << "2) Deposit" << endl;
     cout << "3) Quit" << endl;
+    cout << "4) Save" << endl;
 
     string _input;
     getline(cin, _input);
@@ -46,6 +47,9 @@ void mainMenu(Account *account)
         break;
     case (3):
         loop = false;
+        break;
+    case (4):
+        account->save();
         break;
     }
 }
