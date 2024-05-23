@@ -8,6 +8,7 @@ class Account {
         void withdraw(int amount);
         void deposit(int amount);
         void save();
+        void load();
 
         int balance = 100;
 

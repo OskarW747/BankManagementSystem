@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include <stdlib.h>
+#include <cstdlib>
+#include <cstdint>
 #include "Account.h"
 
 using namespace std;
@@ -16,9 +17,10 @@ bool loop = true;
 
 Account account;
 
-void initializeProgram()
+void initializeProgram(Account *_account)
 {
     cout << "Bankmanagement System" << endl;
+    _account->load();
 }
 
 void mainMenu(Account *account)
@@ -31,7 +33,6 @@ void mainMenu(Account *account)
     cout << "1) Withdraw" << endl;
     cout << "2) Deposit" << endl;
     cout << "3) Quit" << endl;
-    cout << "4) Save" << endl;
 
     string _input;
     getline(cin, _input);
@@ -47,9 +48,6 @@ void mainMenu(Account *account)
         break;
     case (3):
         loop = false;
-        break;
-    case (4):
-        account->save();
         break;
     }
 }
@@ -74,8 +72,9 @@ void withdrawMenu(Account *account)
     {
         try
         {
-            uint8_t _inputInt = stoi(_input);
+            uint64_t _inputInt = stoi(_input);
             account->withdraw(_inputInt);
+            account->save();
         }
         catch (const std::exception &e)
         {
@@ -104,8 +103,9 @@ void depositMenu(Account *account)
     {
         try
         {
-            uint8_t _inputInt = stoi(_input);
+            uint64_t _inputInt = stoi(_input);
             account->deposit(_inputInt);
+            account->save();
         }
         catch (const std::exception &e)
         {
@@ -132,12 +132,13 @@ void menuController(string _input, uint8_t _menuIndex)
 
 int main()
 {
-    initializeProgram();
+    initializeProgram(&account);
 
     /* Main loop */
     while (loop == true)
     {
         cout << "MainLoop" << endl;
+        cout << "MenuIndex: " << menuIndex << endl;
         /* Do logic */
 
         // Terminate program if input == quit
