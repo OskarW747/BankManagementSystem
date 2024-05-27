@@ -14,6 +14,7 @@ include_directories(include)
 set(SOURCES
     src/main.cpp
     src/Account.cpp
+    src/Login.cpp
 )
 
 # Executable target
