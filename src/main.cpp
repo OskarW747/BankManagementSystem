@@ -15,7 +15,7 @@ string input;
 uint8_t menuIndex = MAIN_MENU_INDEX;
 bool loop = true;
 
-Account account;
+Account account1("account1");
 
 void initializeProgram(Account *_account)
 {
@@ -29,7 +29,7 @@ void mainMenu(Account *account)
     cout << "-----------------------------" << endl;
     cout << "          MAIN MENU" << endl;
     cout << "-----------------------------" << endl;
-    cout << "\nBalance: " << account->balance << endl;
+    cout << "\nBalance: " << account->getBalance() << endl;
     cout << "1) Withdraw" << endl;
     cout << "2) Deposit" << endl;
     cout << "3) Quit" << endl;
@@ -58,7 +58,7 @@ void withdrawMenu(Account *account)
     cout << "-----------------------------" << endl;
     cout << "        Withdraw Menu" << endl;
     cout << "-----------------------------" << endl;
-    cout << "\nBalance: " << account->balance << endl;
+    cout << "\nBalance: " << account->getBalance() << endl;
     cout << "Enter withdraw amount or type back to go back: ";
 
     string _input;
@@ -72,7 +72,7 @@ void withdrawMenu(Account *account)
     {
         try
         {
-            uint64_t _inputInt = stoi(_input);
+            int _inputInt = stoi(_input);
             account->withdraw(_inputInt);
             account->save();
         }
@@ -89,7 +89,7 @@ void depositMenu(Account *account)
     cout << "-----------------------------" << endl;
     cout << "        Deposit Menu" << endl;
     cout << "-----------------------------" << endl;
-    cout << "\nBalance: " << account->balance << endl;
+    cout << "\nBalance: " << account->getBalance() << endl;
     cout << "Enter deposit amount or type back to go back: ";
 
     string _input;
@@ -103,7 +103,7 @@ void depositMenu(Account *account)
     {
         try
         {
-            uint64_t _inputInt = stoi(_input);
+            int _inputInt = stoi(_input);
             account->deposit(_inputInt);
             account->save();
         }
@@ -119,20 +119,20 @@ void menuController(string _input, uint8_t _menuIndex)
     switch (_menuIndex)
     {
     case (MAIN_MENU_INDEX):
-        mainMenu(&account);
+        mainMenu(&account1);
         break;
     case (WITHDRAW_MENU_INDEX):
-        withdrawMenu(&account);
+        withdrawMenu(&account1);
         break;
     case (DEPOSIT_MENU_INDEX):
-        depositMenu(&account);
+        depositMenu(&account1);
         break;
     }
 }
 
 int main()
 {
-    initializeProgram(&account);
+    initializeProgram(&account1);
 
     /* Main loop */
     while (loop == true)

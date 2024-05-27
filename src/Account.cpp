@@ -1,21 +1,24 @@
 #include "Account.h"
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <cstdlib>
+#include <cstdint>
 
 void Account::withdraw(int _amount)
 {
 
-    balance = balance - _amount;
+    _balance = _balance - _amount;
 }
 
 void Account::deposit(int _amount)
 {
-    balance = balance + _amount;
+    _balance = _balance + _amount;
 }
 
 void Account::load()
 {
-    std::ifstream saveFile ("save.txt");
+    std::ifstream saveFile (_name + "save.txt");
     
     if (!saveFile.is_open()){
         std::cout << "Unable to open file" << std::endl;
@@ -24,7 +27,7 @@ void Account::load()
 
     std::string line;
     while (std::getline(saveFile, line)){
-        balance = stoi(line);
+        _balance = stoi(line);
     }
 
     saveFile.close();
@@ -33,8 +36,8 @@ void Account::load()
 void Account::save()
 {
     std::ofstream saveFile;
-    saveFile.open("save.txt");
-    saveFile << balance;
+    saveFile.open(_name + "save.txt");
+    saveFile << _balance;
     saveFile.close();
 }
 

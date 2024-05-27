@@ -3,19 +3,21 @@
 
 #include <fstream>
 
-class Account {
-    public:
-        void withdraw(int amount);
-        void deposit(int amount);
-        void save();
-        void load();
+class Account
+{
+public:
+    Account(std::string name) : _name(name), _balance(0){};
+    void withdraw(int _amount);
+    void deposit(int _amount);
+    void save();
+    void load();
+    int getBalance() const { return _balance; }
 
-        int balance = 100;
+private:
+    unsigned int _balance;
+    std::string _name;
 
-    private:
-        int _amount;
-
-        //ofstream _saveFile;
+    // ofstream _saveFile;
 };
 
 #endif
