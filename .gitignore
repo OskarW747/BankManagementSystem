@@ -1,4 +1,7 @@
 .vscode
+.vs
 bin
 build
 src\build
+src\vc140.pdb
+out

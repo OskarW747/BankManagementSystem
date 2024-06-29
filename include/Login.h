@@ -4,10 +4,12 @@
 
 class LoginPage {
     public:
-        void print();
+        void initialize();
 
     private:
-
+        void print();
+        void load();
+        string _input;
 };
 
 #endif
