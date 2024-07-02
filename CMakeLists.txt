@@ -15,6 +15,7 @@ set(SOURCES
     src/main.cpp
     src/Account.cpp
     src/Login.cpp
+    src/Load.cpp
 )
 
 # Executable target

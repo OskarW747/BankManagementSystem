@@ -1,15 +1,18 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
+#include <fstream>
+#include <string>
 
 class LoginPage {
-    public:
-        void initialize();
+public:
+    Login();
+    void initialize();
 
     private:
-        void print();
+        bool checkUsername();
         void load();
-        string _input;
+        std::string _usernamesFile = "usernames.txt";
 };
 
 #endif

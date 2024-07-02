@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <cstdint>
 #include "Account.h"
+#include "Login.h"
 
 using namespace std;
 
@@ -17,10 +18,16 @@ bool loop = true;
 
 Account account1("account1");
 
-void initializeProgram(Account *_account)
+Login login();
+
+void initializeProgram(Account *_account, Login *_login)
 {
     cout << "Bankmanagement System" << endl;
-    _account->load();
+
+    // Test of loginsystem
+    _login->checkUsername();
+
+    //_account->load();
 }
 
 void mainMenu(Account *account)
@@ -132,7 +139,7 @@ void menuController(string _input, uint8_t _menuIndex)
 
 int main()
 {
-    initializeProgram(&account1);
+    initializeProgram(&account1, &login);
 
     /* Main loop */
     while (loop == true)
