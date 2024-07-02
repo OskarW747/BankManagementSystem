@@ -2,8 +2,9 @@
 #include <string>
 #include <cstdlib>
 #include <cstdint>
-#include "Account.h"
+
 #include "Login.h"
+#include "Account.h"
 
 using namespace std;
 
@@ -15,17 +16,18 @@ using namespace std;
 string input;
 uint8_t menuIndex = MAIN_MENU_INDEX;
 bool loop = true;
+bool isLoggedIn = false;
 
 Account account1("account1");
 
-Login login();
+LoginPage login;
 
-void initializeProgram(Account *_account, Login *_login)
+void initializeProgram(Account *_account, LoginPage *_login)
 {
     cout << "Bankmanagement System" << endl;
 
     // Test of loginsystem
-    _login->checkUsername();
+    isLoggedIn = _login->checkUsername();
 
     //_account->load();
 }
@@ -142,7 +144,7 @@ int main()
     initializeProgram(&account1, &login);
 
     /* Main loop */
-    while (loop == true)
+    while (loop == true && isLoggedIn == true)
     {
         cout << "MainLoop" << endl;
         cout << "MenuIndex: " << menuIndex << endl;

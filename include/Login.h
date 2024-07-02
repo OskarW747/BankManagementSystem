@@ -6,11 +6,12 @@
 
 class LoginPage {
 public:
-    Login();
+    LoginPage();
     void initialize();
+    bool checkUsername();
 
     private:
-        bool checkUsername();
+        
         void load();
         std::string _usernamesFile = "usernames.txt";
 };

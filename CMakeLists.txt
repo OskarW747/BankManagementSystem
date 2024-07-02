@@ -19,4 +19,4 @@ set(SOURCES
 )
 
 # Executable target
-add_executable(${PROJECT_NAME} ${SOURCES})
+

@@ -2,6 +2,7 @@
 .vs
 bin
 build
+dep
 src\build
 src\vc140.pdb
 out
